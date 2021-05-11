@@ -5,15 +5,11 @@
         - Contains the type of card and its associated number / power
 */
 
-// Defines the dimensions of a standard card
-    // Not sure if it should be used in the class or left in this file
-const CARD_HEIGHT = 100;
-const CARD_WIDTH = 50;
-
 // Contains the list of elements a card can have
-const ELEMENT_FIRE = 'PYRO';
-const ELEMENT_ICE = 'CRYO';
-const ELEMENT_WATER = 'HYDRO';
+//  - also contains a null element just in case
+const ELEMENTS = ['PYRO', 'CRYO', 'HYDRO']
+const ELEMENT_NULL = 'NULL';
+
 
 // Contains the minimum and maximum power level a card can have
 const MIN_POWER = 1;
@@ -26,7 +22,7 @@ const MAX_POWER = 10;
 
     Fields:
         @element [TEXT]: the element that the card corresponds to
-            - The parameter validates the type, making sure it's one of the three
+            - The parameter validates the type, making sure it's one of the existing elements
             - If no valid type is found, it auto-assigns it pyro and sends an error log
 
         @power [NUMBER]: a number associated to the card, deciding its power level 
@@ -36,23 +32,14 @@ const MAX_POWER = 10;
 */
 function Card(element, power){
     // Element Validation
-    switch (element){
-        case ELEMENT_WATER:
-            this.element = ELEMENT_WATER;
-            break;
-
-        case ELEMENT_ICE:
-            this.element = ELEMENT_ICE;
-            break;
-        
-        case ELEMENT_FIRE:
-            this.element = ELEMENT_FIRE;
-            break;
-
-        default:
-            this.element = ELEMENT_FIRE;
-            console.log('ERROR: No valid element was found for this card!')
+    if (element >= 0 && element <= ELEMENTS.length){
+        this.element = ELEMENTS[element];
     }
+    else {
+        this.element = ELEMENT_NULL;
+        console.log('ERROR: No valid element was found for this card!')
+    }
+    
 
     // Power Level Validation
     if (power >= MIN_POWER && power <= MAX_POWER){
@@ -78,6 +65,10 @@ function Card(element, power){
         - TO-UPDATE: THIS IS MOSTLY PLACEHOLDER CODE AT THE MOMENT
 */
 
+// Defines the dimensions of a standard card
+    // Not sure if it should be used in the class or left in this file
+    const CARD_HEIGHT = 100;
+    const CARD_WIDTH = 50;
 
 function showCard(Card){
     element = Card.element;
@@ -85,8 +76,12 @@ function showCard(Card){
 
     if (element == undefined){
         console.log('ERROR: Element is invalid');
+        return;
     }
     
+    // Debugging
     console.log('ELEMENT: ' + element);
     console.log('POWER LEVEL: ' + power);
+
+    if (element == ELEMENT_NULL){ return; } // Placeholder for empty cards
 }

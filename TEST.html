@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
 <body>
-    <script src = 'CardClass.js'>
-    </script>
+    <canvas id = "cardGame"
+        width = '1024'
+        height = '768'>
+    </canvas>
+
+    <script src = 'CardClass.js'></script>
+    <script src = 'DeckManager.js'></script>
 
     <script>
-        let testCard = new Card(ELEMENT_FIRE, 10);
+        let testCard = new Card(2, 10);
+        initialiseDeck();
     </script>
 </body>
 </html>
