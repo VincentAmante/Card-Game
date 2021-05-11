@@ -21,11 +21,11 @@ const MAX_POWER = 10;
         - if a card contains an ability, it goes here
 
     Fields:
-        @element [TEXT]: the element that the card corresponds to
+        <element> [TEXT]: the element that the card corresponds to
             - The parameter validates the type, making sure it's one of the existing elements
             - If no valid type is found, it auto-assigns it pyro and sends an error log
 
-        @power [NUMBER]: a number associated to the card, deciding its power level 
+        <power> [NUMBER]: a number associated to the card, deciding its power level 
             - the power level is validated to be within the limits of the minimum and maximum power level
                 (defined above)
             - otherwise, it just assigns the minimum powerlevel and sends an error logs
@@ -50,7 +50,7 @@ function Card(element, power){
         console.log('ERROR: Invalid power level assigned!')
     }
 
-    // ERROR CHECKING
+    // FOR DEBUGGING
     console.log('New card was created with ELEMENT: ' + this.element + ' and power level of ' + this.power);
 
     // TO CONSIDER:
@@ -71,8 +71,8 @@ function Card(element, power){
     const CARD_WIDTH = 50;
 
 function showCard(Card){
-    element = Card.element;
-    power = Card.power;
+    let element = Card.element;
+    let power = Card.power;
 
     if (element == undefined){
         console.log('ERROR: Element is invalid');
