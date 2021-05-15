@@ -137,8 +137,8 @@ function compareCards(index){
     p1Card = field[index][PLAYER1];
     p2Card = field[index][PLAYER2];
 
-    let p1CardElement = ELEMENTS.indexOf(p1Card.element);
-    let p2CardElement = ELEMENTS.indexOf(p2Card.element);
+    let p1CardElement = ELEMENTS.indexOf(p1Card.getElement());
+    let p2CardElement = ELEMENTS.indexOf(p2Card.getElement());
 
     // Keywords for outcome of comparison
     const DRAW = 0;

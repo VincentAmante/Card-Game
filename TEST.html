@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
     canvas {
         border: 1px solid black;
     }
@@ -16,10 +20,52 @@
         width = '1024'
         height = '768'>
     </canvas>
+    <img id = "pyro" src = "images/pyro_200.png"> 
+            <!-- Contains files involving the main game-->
+            <script src = 'CardClass.js'></script>
+            <script src = 'DeckManager.js'></script>
+            <script src = 'ComputerAI.js'></script>
+            <script src = 'GameFlow.js'></script>
+    
+            <!-- Contains files for visualising the game in Canvas -->
+            <script src = 'Canvas.js'></script>
+            <script src = 'CardVisuals.js'></script>
 
-    <script src = 'CardClass.js'></script>
-    <script src = 'DeckManager.js'></script>
-    <script src = 'ComputerAI.js'></script>
-    <script src = 'GameFlow.js'></script>
+            <script>
+                // Test Script
+
+                let startingCoordinates = {
+                    x: 2,
+                    y: 2
+                }
+
+                let finalCoordinates = {
+                    x: 100,
+                    y: 100
+                }
+
+                let currentCoordinates = {
+                    x: startingCoordinates.x,
+                    y: startingCoordinates.y
+                }
+
+                // ctx.fillStyle = 'red';
+                // ctx.fillRect(startingCoordinates.x, startingCoordinates.y, 100, 100)
+
+                const velocity = 1;
+
+                function moveIt(){
+                    if (currentCoordinates.x < finalCoordinates.x){
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillRect(currentCoordinates.x, currentCoordinates.y, 100, 100)
+
+                        currentCoordinates.x+= velocity;
+                        console.log(currentCoordinates.x);
+                        currentCoordinates.y+= velocity;
+                        console.log(currentCoordinates.y);
+                        requestAnimationFrame(moveIt);
+                    }
+                }
+            </script>
 </body>
 </html>

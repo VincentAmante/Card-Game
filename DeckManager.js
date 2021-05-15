@@ -60,7 +60,7 @@ function chooseCard(deck, index){
         }
 
         field[p1PlacedCards][PLAYER1] = player1Deck[index];
-        showCard(player1Deck[index]);
+        player1Deck[index].showCard();
         p1PlacedCards++;
     }
 
@@ -71,7 +71,7 @@ function chooseCard(deck, index){
         }
 
         field[p2PlacedCards][PLAYER2] = player2Deck[index];
-        showCard(player2Deck[index]);
+        player2Deck[index].showCard();
         p2PlacedCards++;
     }
 

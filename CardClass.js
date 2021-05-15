@@ -30,8 +30,13 @@ const MAX_POWER = 10;
                 (defined above)
             - otherwise, it just assigns the minimum powerlevel and sends an error logs
 */
-function Card(element, power){
-    // Element Validation
+
+class Card {
+    #element;
+    #power;
+
+    constructor(element, power){
+        // Element Validation
     if (element >= 0 && element <= ELEMENTS.length){
         this.element = ELEMENTS[element];
     }
@@ -52,11 +57,27 @@ function Card(element, power){
 
     // FOR DEBUGGING
     console.log('New card was created with ELEMENT: ' + this.element + ' and power level of ' + this.power);
+    }
 
-    // TO CONSIDER:
-        // Abilities to spice things ups
+    getElement(){
+        return this.element;
+    }
+
+    getPower(){
+        return this.power;
+    }
+
+    showCard(){
+        if (this.element == undefined){
+            console.log('ERROR: Element is invalid');
+            return;
+        }
+        
+        // Debugging
+        console.log('ELEMENT: ' + this.element);
+        console.log('POWER LEVEL: ' + this.power);
+    }
 }
-
 
 /* 
     === Card Visuals ===
@@ -64,24 +85,3 @@ function Card(element, power){
 
         - TO-UPDATE: THIS IS MOSTLY PLACEHOLDER CODE AT THE MOMENT
 */
-
-// Defines the dimensions of a standard card
-    // Not sure if it should be used in the class or left in this file
-    const CARD_HEIGHT = 100;
-    const CARD_WIDTH = 50;
-
-function showCard(Card){
-    let element = Card.element;
-    let power = Card.power;
-
-    if (element == undefined){
-        console.log('ERROR: Element is invalid');
-        return;
-    }
-    
-    // Debugging
-    console.log('ELEMENT: ' + element);
-    console.log('POWER LEVEL: ' + power);
-
-    if (element == ELEMENT_NULL){ return; } // Placeholder for empty cards
-}
