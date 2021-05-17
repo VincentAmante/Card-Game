@@ -62,20 +62,18 @@ class Card {
     getElement(){
         return this.element;
     }
-
     getPower(){
         return this.power;
     }
-
     showCard(){
         if (this.element == undefined){
             console.log('ERROR: Element is invalid');
             return;
         }
         
-        // Debugging
-        console.log('ELEMENT: ' + this.element);
-        console.log('POWER LEVEL: ' + this.power);
+    // Debugging
+    console.log('ELEMENT: ' + this.element);
+    console.log('POWER LEVEL: ' + this.power);
     }
 }
 

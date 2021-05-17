@@ -35,13 +35,14 @@ function displayCard(Coordinates, Card){
     ctx.font = '24px Jost';
     ctx.textAlign = 'left';
     ctx.textBaseLine = 'bottom';
-    ctx.fillText(Card.getPower(), NORMAL_CARD.WIDTH - 13, NORMAL_CARD.HEIGHT - 3, 60);
+    ctx.fillText(Card.getPower(), NORMAL_CARD.WIDTH - 14, NORMAL_CARD.HEIGHT - 3, 60);
 
     // Adds Images
-    let pyroImage = document.getElementById("pyro");
-    ctx.drawImage(pyroImage, Coordinates.x + 17, Coordinates.y + 30, 65, 65);
+    let elementImg = getImage(Card.element); 
+    ctx.drawImage(elementImg, Coordinates.x + 17, Coordinates.y + 30, 65, 65);
 }
 
+// Gets Gradient
 function getGradient(element){
     switch (element){
         case 'PYRO':
@@ -60,4 +61,35 @@ function getGradient(element){
                 stopEnd: '#1D4AEC'
             }
     }
+}
+const IMG_SIZE = 65;
+
+let pyroImage = new Image(IMG_SIZE, IMG_SIZE);
+pyroImage.src = 'images/pyro_200.png'
+let cryoImage = new Image(IMG_SIZE, IMG_SIZE);
+cryoImage.src = 'images/cryo_200.png'
+let hydroImage = new Image(IMG_SIZE, IMG_SIZE);
+hydroImage.src = 'images/hydro_200.png'
+
+// Gets Element Image
+function getImage(element){
+    switch (element){
+        case 'PYRO': return pyroImage;
+        case 'CRYO': return cryoImage;
+        case 'HYDRO': return hydroImage;
+    }
+}
+
+// Displays the deck
+function displayDeck(coords, deck){
+    let spacing = 30; //TODO: DECIDE
+    
+    for (let i = 0; i < 5; i++){
+    let x = coords.x + (NORMAL_CARD.WIDTH * i) + (spacing * i);
+    
+    displayCard({x: x, y: coords.y}, deck[i]);
+    }
+}
+
+function displayField(player, card){
 }

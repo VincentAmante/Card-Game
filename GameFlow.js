@@ -197,6 +197,7 @@ function compareCards(index){
     }
 }
 
+let keypress = false;
 
 function main(){
     let i = 0;
@@ -204,6 +205,11 @@ function main(){
         console.log(player1Deck);
         console.log(player2Deck);
         fillDeck();
+
+        ctx.clearRect(0, 0, 1024, 768);
+        displayDeck({x: 222, y: 608}, player1Deck);
+        displayDeck({x: 222, y: 38}, player2Deck);
+
         chooseCards();
         compareCards(0);
         console.log(field);
