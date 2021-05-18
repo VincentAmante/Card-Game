@@ -86,12 +86,22 @@ function addScore(pScores, Card){
         default:
             console.log('ERROR: ELEMENT NOT DETECTED');
     }
-
-    // Debugging
-    console.log(p1Scores);
-    console.log(p2Scores);
 }
 
+function showScores(){
+    // Player 1 Scores
+    document.getElementById('p1ElementalScore').innerHTML = p1Scores.elementScore;
+    document.getElementById('p1PyroScore').innerHTML = p1Scores.pyroScore;
+    document.getElementById('p1CryoScore').innerHTML = p1Scores.cryoScore;
+    document.getElementById('p1HydroScore').innerHTML = p1Scores.hydroScore;
+
+    // Player 2 Scores
+    document.getElementById('p2ElementalScore').innerHTML = p2Scores.elementScore;
+    document.getElementById('p2PyroScore').innerHTML = p2Scores.pyroScore;
+    document.getElementById('p2CryoScore').innerHTML = p2Scores.cryoScore;
+    document.getElementById('p2HydroScore').innerHTML = p2Scores.hydroScore;
+
+}
 /*
     Checks to see if the player has won
         - TODO: Decide what happens when a winner is found
@@ -99,26 +109,26 @@ function addScore(pScores, Card){
 function winCheck(){
     if (p1Scores.elementScore >= MATCH_WIN){
             winner = 'PLAYER 1';
-            console.log('PLAYER 1 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS');
+            document.getElementById('results').innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
         }
         
     else if (p1Scores.pyroScore >= MATCH_WIN
         || p1Scores.cryoWin >= MATCH_WIN
         || p1Scores.hydroScore >= MATCH_WIN){
             winner = 'PLAYER 1';
-            console.log('PLAYER 1 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT');
+            document.getElementById('results').innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
         }
 
     else if (p2Scores.elementScore >= MATCH_WIN){
             winner = 'PLAYER 2';
-            console.log('PLAYER 2 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS');
+            document.getElementById('results').innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
         }
 
     else if (p2Scores.pyroScore >= MATCH_WIN
         || p2Scores.cryoWin >= MATCH_WIN
         || p2Scores.hydroScore >= MATCH_WIN){
             winner = 'PLAYER 2';
-            console.log('PLAYER 2 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT');
+            document.getElementById('results').innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
         }
 }
 
@@ -177,17 +187,17 @@ function compareCards(index){
 
         if (p1Card.power > p2Card.power){
             addScore(p1Scores, p1Card);
-            console.log('PLAYER 1 WINS THE ROUND DUE TO HIGHER POWER LEVEL');
+            document.getElementById('results').innerHTML = 'PLAYER 1 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
         }
         else if (p1Card.power < p2Card.power){
             addScore(p2Scores, p2Card);
-            console.log('PLAYER 2 WINS THE ROUND DUE TO HIGHER POWER LEVEL');
+            document.getElementById('results').innerHTML = 'PLAYER 2 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
         }
         else if (p1Card.power == p2Card.power){
-            console.log('IT IS A DRAW')
+            document.getElementById('results').innerHTML = 'IT IS A DRAW';
         }
         else {
-            console.log('ERROR: MATCHING ELEMENT BUT POWER LEVEL UNDETERMINED');
+            document.getElementById('results').innerHTML = 'ERROR: MATCHING ELEMENT BUT POWER LEVEL UNDETERMINED';
         }
     }
 
@@ -233,6 +243,7 @@ function main(){
     if (winner == 'NONE'){
         switch (phase){
             case 'selection':
+                showScores();
                 console.log(player1Deck);
                 console.log(player2Deck);
                 fillDeck();
@@ -248,6 +259,7 @@ function main(){
                 fieldRemove(PLAYER1, 0);
                 fieldRemove(PLAYER2, 0);
                 winCheck();
+                showScores();
                 phase = 'repeat';
                 break;
 

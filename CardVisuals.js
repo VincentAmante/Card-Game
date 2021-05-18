@@ -34,9 +34,9 @@ function displayCard(Coordinates, Card){
     // Adds text
     ctx.fillStyle = '#FFFFFF';
     ctx.font = '24px Jost';
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'right';
     ctx.textBaseLine = 'bottom';
-    ctx.fillText(Card.getPower(), Coordinates.x + NORMAL_CARD.WIDTH - 25, Coordinates.y + NORMAL_CARD.HEIGHT - 8, 60);
+    ctx.fillText(Card.getPower(), Coordinates.x + NORMAL_CARD.WIDTH - 13, Coordinates.y + NORMAL_CARD.HEIGHT - 8, 60);
 
     // Adds Images
     let elementImg = getImage(Card.element); 
