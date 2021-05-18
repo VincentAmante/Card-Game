@@ -66,7 +66,7 @@ class Card {
         return this.power;
     }
     showCard(){
-        if (this.element == undefined){
+        if (this == undefined){
             console.log('ERROR: Element is invalid');
             return;
         }

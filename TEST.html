@@ -20,6 +20,7 @@
         width = '1024'
         height = '768'>
     </canvas>
+
             <!-- Contains files involving the main game-->
             <script src = 'CardClass.js'></script>
             <script src = 'DeckManager.js'></script>
@@ -30,6 +31,14 @@
             <script src = 'Canvas.js'></script>
             <script src = 'CardVisuals.js'></script>
 
+            <div id = 'choices'>
+                <button onclick = 'chooseCards(0); cardChosen();'>Card 1</button>
+                <button onclick = 'chooseCards(1); cardChosen();'>Card 2</button>
+                <button onclick = 'chooseCards(2); cardChosen();'>Card 3</button>
+                <button onclick = 'chooseCards(3); cardChosen();'>Card 4</button>
+                <button onclick = 'chooseCards(4); cardChosen();'>Card 5</button>
+                <button onclick = 'finishRound();'>End Round</button>
+            </div>
             <!--
             <script>
                 // Test Script

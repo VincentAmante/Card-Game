@@ -8,7 +8,8 @@
 
 // Display a normal card
 function displayCard(Coordinates, Card){
-    let linGrd = ctx.createLinearGradient(Coordinates.x, Coordinates.y, NORMAL_CARD.WIDTH, NORMAL_CARD.HEIGHT); 
+    let linGrd = ctx.createLinearGradient(Coordinates.x, Coordinates.y, 
+        Coordinates.x + NORMAL_CARD.WIDTH, Coordinates.y + NORMAL_CARD.HEIGHT); 
 
     // Adds Gradient
     ctx.roundRect(Coordinates.x, Coordinates.y, NORMAL_CARD.WIDTH, NORMAL_CARD.HEIGHT, NORMAL_CARD.RADIUS);
@@ -35,7 +36,7 @@ function displayCard(Coordinates, Card){
     ctx.font = '24px Jost';
     ctx.textAlign = 'left';
     ctx.textBaseLine = 'bottom';
-    ctx.fillText(Card.getPower(), NORMAL_CARD.WIDTH - 14, NORMAL_CARD.HEIGHT - 3, 60);
+    ctx.fillText(Card.getPower(), Coordinates.x + NORMAL_CARD.WIDTH - 25, Coordinates.y + NORMAL_CARD.HEIGHT - 8, 60);
 
     // Adds Images
     let elementImg = getImage(Card.element); 
@@ -47,7 +48,7 @@ function getGradient(element){
     switch (element){
         case 'PYRO':
             return {
-                stopStart: '#FF8328',
+                stopStart: '#FFA360',
                 stopEnd: '#FF0F00'
             }
         case 'CRYO':
@@ -57,7 +58,7 @@ function getGradient(element){
             }
         case 'HYDRO':
             return {
-                stopStart: '#48BDFF',
+                stopStart: '#ABE1FF',
                 stopEnd: '#1D4AEC'
             }
     }
@@ -86,10 +87,21 @@ function displayDeck(coords, deck){
     
     for (let i = 0; i < 5; i++){
     let x = coords.x + (NORMAL_CARD.WIDTH * i) + (spacing * i);
+    console.log(x);
     
     displayCard({x: x, y: coords.y}, deck[i]);
     }
 }
 
-function displayField(player, card){
+function displayField(){
+    console.log('trying to display field');
+    displayCard({
+        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 - 100)},
+        field[0][0]);
+
+    displayCard({
+        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 + 100)},
+        field[0][1]);
 }

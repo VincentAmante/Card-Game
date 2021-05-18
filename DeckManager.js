@@ -51,9 +51,11 @@ const PLAYER2 = 1;
             <deck> - the deck from which this card will be removed from
             <index> - index in the deck
 */
-function chooseCard(deck, index){
+function chooseCard(deck, index, player){
 
-    if (deck == player1Deck){
+    if (player == PLAYER1){
+        
+        // Attempting to show player 1 card
         if (p1PlacedCards >= MAX_FIELD){
             console.log('ERROR: FIELD ALREADY FULL');
             return;
@@ -64,7 +66,8 @@ function chooseCard(deck, index){
         p1PlacedCards++;
     }
 
-    else if (deck == player2Deck){
+    else if (player == PLAYER2){
+        // Attempting to show player 2 card
         if (p2PlacedCards >= MAX_FIELD){
             console.log('ERROR: FIELD ALREADY FULL');
             return;

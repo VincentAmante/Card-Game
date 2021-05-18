@@ -123,9 +123,8 @@ function winCheck(){
 }
 
 // TEMPORARY Function for Running Game
-function chooseCards(){
-    let playerChoice = prompt("Choose a card")
-    chooseCard(player1Deck, playerChoice)
+function chooseCards(playerChoice){
+    chooseCard(player1Deck, playerChoice, PLAYER1);
     console.log('card 1 was chosen');
     computerChoice();
     console.log('card 2 was chosen');
@@ -197,11 +196,23 @@ function compareCards(index){
     }
 }
 
-let keypress = false;
+let phase = 'selection';
+
+function cardChosen(){
+    phase = 'comparison';
+    main();
+}
+
+function finishRound(){
+    phase = 'repeat';
+    main();
+}
 
 function main(){
     let i = 0;
+    /*
     while (winner == 'NONE'){
+
         console.log(player1Deck);
         console.log(player2Deck);
         fillDeck();
@@ -210,11 +221,40 @@ function main(){
         displayDeck({x: 222, y: 608}, player1Deck);
         displayDeck({x: 222, y: 38}, player2Deck);
 
-        chooseCards();
         compareCards(0);
-        console.log(field);
+        displayField();
+        pause();
         fieldRemove(PLAYER1, 0);
         fieldRemove(PLAYER2, 0);
         winCheck();
     }
+    */
+
+    if (winner == 'NONE'){
+        switch (phase){
+            case 'selection':
+                console.log(player1Deck);
+                console.log(player2Deck);
+                fillDeck();
+        
+                ctx.clearRect(0, 0, 1024, 768);
+                displayDeck({x: 222, y: 608}, player1Deck);
+                displayDeck({x: 222, y: 38}, player2Deck);
+                break;
+            
+            case 'comparison':
+                compareCards(0);
+                displayField();
+                fieldRemove(PLAYER1, 0);
+                fieldRemove(PLAYER2, 0);
+                winCheck();
+                phase = 'repeat';
+                break;
+
+            case 'repeat':
+                phase = 'selection';
+                main();
+        }
+    }
+
 }
