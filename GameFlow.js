@@ -102,42 +102,46 @@ function showScores(){
     document.getElementById('p2HydroScore').innerHTML = p2Scores.hydroScore;
 
 }
+
 /*
     Checks to see if the player has won
         - TODO: Decide what happens when a winner is found
 */
+
+let system = document.getElementById('results');
 function winCheck(){
     if (p1Scores.elementScore >= MATCH_WIN){
             winner = 'PLAYER 1';
-            document.getElementById('results').innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
+            system.innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
         }
         
     else if (p1Scores.pyroScore >= MATCH_WIN
         || p1Scores.cryoWin >= MATCH_WIN
         || p1Scores.hydroScore >= MATCH_WIN){
             winner = 'PLAYER 1';
-            document.getElementById('results').innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
+            system.innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
         }
 
     else if (p2Scores.elementScore >= MATCH_WIN){
             winner = 'PLAYER 2';
-            document.getElementById('results').innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
+            system.innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
         }
 
     else if (p2Scores.pyroScore >= MATCH_WIN
         || p2Scores.cryoWin >= MATCH_WIN
         || p2Scores.hydroScore >= MATCH_WIN){
             winner = 'PLAYER 2';
-            document.getElementById('results').innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
+            system.innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
         }
 }
 
-// TEMPORARY Function for Running Game
 function chooseCards(playerChoice){
-    chooseCard(player1Deck, playerChoice, PLAYER1);
-    console.log('card 1 was chosen');
-    computerChoice();
-    console.log('card 2 was chosen');
+    if (phase == 'selection'){
+        chooseCard(player1Deck, playerChoice, PLAYER1);
+        console.log('card 1 was chosen');
+        computerChoice();
+        console.log('card 2 was chosen');
+    }
 }
 
 // Function compares cards
@@ -175,29 +179,29 @@ function compareCards(index){
     // Adds score and shows result
     if (elementResult == WIN){
         addScore(p1Scores, p1Card);
-        console.log('Player 1 wins as ' + p1Card.element + ' beats ' + p2Card.element);
+        system.innerHTML = 'Player 1 wins as ' + p1Card.element + ' beats ' + p2Card.element;
     }
 
     else if (elementResult == LOSE){
         addScore(p2Scores, p2Card);
-        console.log('Player 2 wins as ' + p2Card.element + ' beats ' + p1Card.element);
+        system.innerHTML = 'Player 2 wins as ' + p2Card.element + ' beats ' + p1Card.element;
     }
 
     else if (elementResult == DRAW){
 
         if (p1Card.power > p2Card.power){
             addScore(p1Scores, p1Card);
-            document.getElementById('results').innerHTML = 'PLAYER 1 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
+            system.innerHTML = 'PLAYER 1 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
         }
         else if (p1Card.power < p2Card.power){
             addScore(p2Scores, p2Card);
-            document.getElementById('results').innerHTML = 'PLAYER 2 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
+            system.innerHTML = 'PLAYER 2 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
         }
         else if (p1Card.power == p2Card.power){
-            document.getElementById('results').innerHTML = 'IT IS A DRAW';
+            system.innerHTML = 'IT IS A DRAW';
         }
         else {
-            document.getElementById('results').innerHTML = 'ERROR: MATCHING ELEMENT BUT POWER LEVEL UNDETERMINED';
+            system.innerHTML = 'ERROR: MATCHING ELEMENT BUT POWER LEVEL UNDETERMINED';
         }
     }
 
@@ -209,40 +213,30 @@ function compareCards(index){
 let phase = 'selection';
 
 function cardChosen(){
-    phase = 'comparison';
-    main();
+    console.log(phase);
+    if (phase == 'selection'){
+        phase = 'comparison';
+        console.log(phase);
+        main();
+    }
 }
 
 function finishRound(){
-    phase = 'repeat';
-    main();
+    console.log(phase);
+    if (phase == 'comparison'){    
+        console.log(phase);
+        phase = 'selection';
+        main();
+    }
 }
 
 function main(){
-    let i = 0;
-    /*
-    while (winner == 'NONE'){
-
-        console.log(player1Deck);
-        console.log(player2Deck);
-        fillDeck();
-
-        ctx.clearRect(0, 0, 1024, 768);
-        displayDeck({x: 222, y: 608}, player1Deck);
-        displayDeck({x: 222, y: 38}, player2Deck);
-
-        compareCards(0);
-        displayField();
-        pause();
-        fieldRemove(PLAYER1, 0);
-        fieldRemove(PLAYER2, 0);
-        winCheck();
-    }
-    */
-
+let round = 1;
     if (winner == 'NONE'){
         switch (phase){
             case 'selection':
+                displayField();
+                system.innerHTML = 'Round ' + round + ' begin!'; 
                 showScores();
                 console.log(player1Deck);
                 console.log(player2Deck);
@@ -260,12 +254,8 @@ function main(){
                 fieldRemove(PLAYER2, 0);
                 winCheck();
                 showScores();
-                phase = 'repeat';
+                round++;
                 break;
-
-            case 'repeat':
-                phase = 'selection';
-                main();
         }
     }
 

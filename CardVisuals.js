@@ -95,13 +95,16 @@ function displayDeck(coords, deck){
 
 function displayField(){
     console.log('trying to display field');
-    displayCard({
-        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
-        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 - 100)},
-        field[0][0]);
+    if (field[0][0].getElement != undefined){
+        displayCard({
+            x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+            y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 - 100)},
+            field[0][0]);
+    
+        displayCard({
+            x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+            y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 + 100)},
+            field[0][1]);
+    }
 
-    displayCard({
-        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
-        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 + 100)},
-        field[0][1]);
 }

@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href='main.css' rel='stylesheet'>
 
 
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
-
-    canvas {
-        border: 1px solid black;
-    }
 </style>
-<body>
-    <div>
-        <h2>Player 2 Score</h2>
-        <p>Elemental Score: <span id = 'p2ElementalScore'>0</span></p>
-        <p>Pyro Wins: <span id = 'p2PyroScore'>0</span></p>
-        <p>Cryo Wins: <span id = 'p2CryoScore'>0</span></p>
-        <p>Hydro Wins: <span id = 'p2HydroScore'>0</span></p>
-    </div>
-    <div id = "results">Test</div>
-    <canvas id = "cardGame"
-        width = '1024'
-        height = '768'>
-    </canvas>
-            <div id = 'choices'>
-                <button onclick = 'chooseCards(0); cardChosen();'>Card 1</button>
-                <button onclick = 'chooseCards(1); cardChosen();'>Card 2</button>
-                <button onclick = 'chooseCards(2); cardChosen();'>Card 3</button>
-                <button onclick = 'chooseCards(3); cardChosen();'>Card 4</button>
-                <button onclick = 'chooseCards(4); cardChosen();'>Card 5</button>
-                <button onclick = 'finishRound();'>End Round</button>
-            </div>
-            <div>
-                <h2>Player 1 Score</h2>
-                <p>Elemental Score: <span id = 'p1ElementalScore'>0</span></p>
-                <p>Pyro Wins: <span id = 'p1PyroScore'>0</span></p>
-                <p>Cryo Wins: <span id = 'p1CryoScore'>0</span></p>
-                <p>Hydro Wins: <span id = 'p1HydroScore'>0</span></p>
-            </div>
 
-                        <!-- Contains files involving the main game-->
-                        <script src = 'CardClass.js'></script>
-                        <script src = 'DeckManager.js'></script>
-                        <script src = 'ComputerAI.js'></script>
-                        <script src = 'GameFlow.js'></script>
-                
-                        <!-- Contains files for visualising the game in Canvas -->
-                        <script src = 'Canvas.js'></script>
-                        <script src = 'CardVisuals.js'></script>
-                        <script>hydroImage.onload = function(){ main(); }</script>
+<body>
+    <div class='interface'>
+        <h2>Player 2 Score</h2>
+        <p>Elemental Score: <span id='p2ElementalScore'>0</span></p>
+        <p>Pyro Wins: <span id='p2PyroScore'>0</span></p>
+        <p>Cryo Wins: <span id='p2CryoScore'>0</span></p>
+        <p>Hydro Wins: <span id='p2HydroScore'>0</span></p>
+    </div>
+    <div id="results" class = 'announcement'>Welcome to the Game!</div>
+
+    <canvas id="cardGame"></canvas>
+
+    <div id = 'choices'>
+        <button onclick='chooseCards(0); cardChosen();'>Card 1</button>
+        <button onclick='chooseCards(1); cardChosen();'>Card 2</button>
+        <button onclick='chooseCards(2); cardChosen();'>Card 3</button>
+        <button onclick='chooseCards(3); cardChosen();'>Card 4</button>
+        <button onclick='chooseCards(4); cardChosen();'>Card 5</button>
+    </div>
+    <div id = 'choices'>
+        <button onclick='finishRound();'>End Round</button>
+    </div>
+
+    <div class = 'interface'>
+        <h2>Player 1 Score</h2>
+        <p>Elemental Score: <span id='p1ElementalScore'>0</span></p>
+        <p>Pyro Wins: <span id='p1PyroScore'>0</span></p>
+        <p>Cryo Wins: <span id='p1CryoScore'>0</span></p>
+        <p>Hydro Wins: <span id='p1HydroScore'>0</span></p>
+    </div>
+
+    <!-- Contains files involving the main game-->
+    <script src='CardClass.js'></script>
+    <script src='DeckManager.js'></script>
+    <script src='ComputerAI.js'></script>
+    <script src='GameFlow.js'></script>
+
+    <!-- Contains files for visualising the game in Canvas -->
+    <script src='Canvas.js'></script>
+    <script src='CardVisuals.js'></script>
+    <script>hydroImage.onload = function () { main(); }</script>
 </body>
+
 </html>
