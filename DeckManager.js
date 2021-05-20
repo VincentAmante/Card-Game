@@ -8,6 +8,7 @@
 // Player's decks are designed to carry around 3-4 cards 
 let player1Deck = [];
 let player2Deck = [];
+
 const MAX_CARDS = 5;
 
 // Fills the deck for both players
