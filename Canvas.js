@@ -1,11 +1,10 @@
 // Gets the canvas and its context
-var canvas = document.getElementById('cardGame');
-var ctx = canvas.getContext("2d");
+let canvas = document.getElementById('cardGame');
+let ctx = canvas.getContext("2d");
 canvas.height = 768;
 canvas.width = 1024;
 
 ///// CODE IMPORTED FROM https://codepen.io/simon-wu/pen/ExgLEXQ TO RENDER ROUNDED RECTANGLE
-// TODO: Turn this to my own
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
     if (width < 2 * radius) radius = width / 2;
     if (height < 2 * radius) radius = height / 2;
