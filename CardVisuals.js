@@ -34,9 +34,9 @@ function displayCard(Coordinates, Card){
     // Adds text
     ctx.fillStyle = '#FFFFFF';
     ctx.font = '24px Jost';
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'right';
     ctx.textBaseLine = 'bottom';
-    ctx.fillText(Card.getPower(), Coordinates.x + NORMAL_CARD.WIDTH - 25, Coordinates.y + NORMAL_CARD.HEIGHT - 8, 60);
+    ctx.fillText(Card.getPower(), Coordinates.x + NORMAL_CARD.WIDTH - 13, Coordinates.y + NORMAL_CARD.HEIGHT - 8, 60);
 
     // Adds Images
     let elementImg = getImage(Card.element); 
@@ -95,13 +95,16 @@ function displayDeck(coords, deck){
 
 function displayField(){
     console.log('trying to display field');
-    displayCard({
-        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
-        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 - 100)},
-        field[0][0]);
+    if (field[0][0].getElement != undefined){
+        displayCard({
+            x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+            y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 - 100)},
+            field[0][0]);
+    
+        displayCard({
+            x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
+            y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 + 100)},
+            field[0][1]);
+    }
 
-    displayCard({
-        x: (canvas.width / 2) - (NORMAL_CARD.WIDTH / 2),
-        y: (canvas.height/ 2) - (NORMAL_CARD.HEIGHT / 2 + 100)},
-        field[0][1]);
 }
