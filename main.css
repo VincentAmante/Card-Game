@@ -20,15 +20,17 @@ header {
 /* 
 ======  This contains the code for the storybox, where all narration will occur  =====
 */
+
 #cardGame {
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    padding:5px;
     padding-top: 0;
     border-radius: 20px;
-    overflow: hidden;
     background: #14175a;
     background: linear-gradient(0deg, #32114b 20%, #16185926 48%, #14175a00 100%);
+    
+    background-image: url('images/bg.png');
 }
 
 /* Textbox containing the protagonist's narration */
@@ -41,13 +43,20 @@ header {
     border-radius: 10px;
     width: fit-content;
 
+    
+    font-size: large;
     text-align: justify;
+}
+
+.interface h2 {
+    text-align: center;
 }
 
 /* Textbox when the character speaks*/
 .announcement {
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px 40px;
     display: block;
     overflow: auto;

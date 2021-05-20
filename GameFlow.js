@@ -54,7 +54,7 @@ let p2Scores = {
             <Card> - The Card that won (and its stats)
 */
 function addScore(pScores, Card){
-    let element = Card.element;
+    let element = Card.getElement();
     
     // Makes sure the element has not already won before adding to elementScore
     // Also adds to the corresponding element score
@@ -111,27 +111,27 @@ function showScores(){
 let system = document.getElementById('results');
 function winCheck(){
     if (p1Scores.elementScore >= MATCH_WIN){
-            winner = 'PLAYER 1';
-            system.innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
+            winner = 'Player 1';
+            system.innerHTML = 'Player 1 has won due to winning with all three elements!';
         }
         
     else if (p1Scores.pyroScore >= MATCH_WIN
         || p1Scores.cryoWin >= MATCH_WIN
         || p1Scores.hydroScore >= MATCH_WIN){
-            winner = 'PLAYER 1';
-            system.innerHTML = 'PLAYER 1 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
+            winner = 'Player 1';
+            system.innerHTML = 'Player 1 has won due to winning thrice with one element!';
         }
 
     else if (p2Scores.elementScore >= MATCH_WIN){
-            winner = 'PLAYER 2';
-            system.innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING WITH ALL THREE ELEMENTS';
+            winner = 'Player 2';
+            system.innerHTML = 'Player 2 has won due to winning thrice with all three elements!';
         }
 
     else if (p2Scores.pyroScore >= MATCH_WIN
         || p2Scores.cryoWin >= MATCH_WIN
         || p2Scores.hydroScore >= MATCH_WIN){
-            winner = 'PLAYER 2';
-            system.innerHTML = 'PLAYER 2 HAS WON DUE TO WINNING THRICE WITH ONE ELEMENT';
+            winner = 'Player 2';
+            system.innerHTML = 'Player 2 has won due to winning thrice with one element!';
         }
 }
 
@@ -179,25 +179,25 @@ function compareCards(index){
     // Adds score and shows result
     if (elementResult == WIN){
         addScore(p1Scores, p1Card);
-        system.innerHTML = 'Player 1 wins as ' + p1Card.element + ' beats ' + p2Card.element;
+        system.innerHTML = 'Player 1 wins as ' + p1Card.getElement() + ' beats ' + p2Card.getElement();
     }
 
     else if (elementResult == LOSE){
         addScore(p2Scores, p2Card);
-        system.innerHTML = 'Player 2 wins as ' + p2Card.element + ' beats ' + p1Card.element;
+        system.innerHTML = 'Player 2 wins as ' + p2Card.getElement() + ' beats ' + p1Card.getElement();
     }
 
     else if (elementResult == DRAW){
 
-        if (p1Card.power > p2Card.power){
+        if (p1Card.getPower() > p2Card.getPower()){
             addScore(p1Scores, p1Card);
-            system.innerHTML = 'PLAYER 1 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
+            system.innerHTML = 'Player 1 Wins the round due to higher power level';
         }
-        else if (p1Card.power < p2Card.power){
+        else if (p1Card.getPower() < p2Card.getPower()){
             addScore(p2Scores, p2Card);
-            system.innerHTML = 'PLAYER 2 WINS THE ROUND DUE TO HIGHER POWER LEVEL';
+            system.innerHTML = 'Player 2 Wins the round due to higher power level';
         }
-        else if (p1Card.power == p2Card.power){
+        else if (p1Card.getPower() == p2Card.getPower()){
             system.innerHTML = 'IT IS A DRAW';
         }
         else {
@@ -235,7 +235,7 @@ let round = 1;
     if (winner == 'NONE'){
         switch (phase){
             case 'selection':
-                displayField();
+                cardVisuals.displayField();
                 system.innerHTML = 'Round ' + round + ' begin!'; 
                 showScores();
                 console.log(player1Deck);
@@ -243,13 +243,16 @@ let round = 1;
                 fillDeck();
         
                 ctx.clearRect(0, 0, 1024, 768);
-                displayDeck({x: 222, y: 608}, player1Deck);
-                displayDeck({x: 222, y: 38}, player2Deck);
+                cardVisuals.displayDeck({x: 419, y: 620}, player1Deck);
+                cardVisuals.displayDeck({x: 10, y: 18}, player2Deck);
                 break;
             
             case 'comparison':
+                ctx.clearRect(0, 0, 1024, 768);
                 compareCards(0);
-                displayField();
+                cardVisuals.displayField();
+                cardVisuals.displayDeck({x: 419, y: 620}, player1Deck);
+                cardVisuals.displayDeck({x: 10, y: 18}, player2Deck);
                 fieldRemove(PLAYER1, 0);
                 fieldRemove(PLAYER2, 0);
                 winCheck();
@@ -258,5 +261,4 @@ let round = 1;
                 break;
         }
     }
-
 }

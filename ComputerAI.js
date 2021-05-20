@@ -7,7 +7,6 @@ function chooseRandomCard(){
     return Math.floor(Math.random() * MAX_CARDS);
 }
 
-// TODO: Actually put code here
 function computerChoice(){
     let chosenCard = chooseRandomCard();
     chooseCard(player2Deck, chosenCard, PLAYER2);

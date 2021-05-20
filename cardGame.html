@@ -17,15 +17,14 @@
 <body>
     <div class='interface'>
         <h2>Player 2 Score</h2>
-        <p>Elemental Score: <span id='p2ElementalScore'>0</span></p>
-        <p>Pyro Wins: <span id='p2PyroScore'>0</span></p>
-        <p>Cryo Wins: <span id='p2CryoScore'>0</span></p>
-        <p>Hydro Wins: <span id='p2HydroScore'>0</span></p>
+        <p>Elemental Score: <span id='p2ElementalScore'>0</span>
+            | Pyro Wins: <span id='p2PyroScore'>0</span>
+            | Cryo Wins: <span id='p2CryoScore'>0</span>
+            | Hydro Wins: <span id='p2HydroScore'>0</span></p>
     </div>
     <div id="results" class = 'announcement'>Welcome to the Game!</div>
 
-    <canvas id="cardGame"></canvas>
-
+        <canvas id="cardGame"></canvas>
     <div id = 'choices'>
         <button onclick='chooseCards(0); cardChosen();'>Card 1</button>
         <button onclick='chooseCards(1); cardChosen();'>Card 2</button>
@@ -39,10 +38,10 @@
 
     <div class = 'interface'>
         <h2>Player 1 Score</h2>
-        <p>Elemental Score: <span id='p1ElementalScore'>0</span></p>
-        <p>Pyro Wins: <span id='p1PyroScore'>0</span></p>
-        <p>Cryo Wins: <span id='p1CryoScore'>0</span></p>
-        <p>Hydro Wins: <span id='p1HydroScore'>0</span></p>
+        <p>Elemental Score: <span id='p1ElementalScore'>0</span>
+        | Pyro Wins: <span id='p1PyroScore'>0</span>
+        | Cryo Wins: <span id='p1CryoScore'>0</span>
+        | Hydro Wins: <span id='p1HydroScore'>0</span></p>
     </div>
 
     <!-- Contains files involving the main game-->
@@ -54,7 +53,7 @@
     <!-- Contains files for visualising the game in Canvas -->
     <script src='Canvas.js'></script>
     <script src='CardVisuals.js'></script>
-    <script>hydroImage.onload = function () { main(); }</script>
+    <script> main();</script>
 </body>
 
 </html>

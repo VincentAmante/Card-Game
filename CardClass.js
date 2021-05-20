@@ -6,10 +6,10 @@
 */
 
 // Contains the list of elements a card can have
-//  - also contains a null element just in case
-const ELEMENTS = ['PYRO', 'CRYO', 'HYDRO']
-const ELEMENT_NULL = 'NULL';
+//  - Also contains a null element just in case
 
+const ELEMENTS = ['PYRO', 'CRYO', 'HYDRO'];
+const ELEMENT_NULL = 'NULL';
 
 // Contains the minimum and maximum power level a card can have
 const MIN_POWER = 1;
@@ -29,41 +29,46 @@ const MAX_POWER = 10;
             - the power level is validated to be within the limits of the minimum and maximum power level
                 (defined above)
             - otherwise, it just assigns the minimum powerlevel and sends an error logs
+            
 */
 
 class Card {
+
+    // PRIVATE FIELDS & METHODS
     #element;
     #power;
 
+    // Template for creating a new element
     constructor(element, power){
+
         // Element Validation
-    if (element >= 0 && element <= ELEMENTS.length){
-        this.element = ELEMENTS[element];
-    }
-    else {
-        this.element = ELEMENT_NULL;
-        console.log('ERROR: No valid element was found for this card!')
-    }
-    
+        if (element >= 0 && element <= ELEMENTS.length){
+            this.#element = ELEMENTS[element];
+        }
+        else {
+            this.#element = ELEMENT_NULL;
+            console.log('ERROR: No valid element was found for this card!')
+        }
 
-    // Power Level Validation
-    if (power >= MIN_POWER && power <= MAX_POWER){
-        this.power = power;
-    }
-    else {
-        this.power = MIN_POWER;
-        console.log('ERROR: Invalid power level assigned!')
+        // Power Level Validation
+        if (power >= MIN_POWER && power <= MAX_POWER){
+            this.#power = power;
+        }
+        else {
+            this.#power = MIN_POWER;
+            console.log('ERROR: Invalid power level assigned!')
+        }
+
+        // FOR DEBUGGING
+        console.log('New card was created with ELEMENT: ' + this.#element + ' and power level of ' + this.#power);
     }
 
-    // FOR DEBUGGING
-    console.log('New card was created with ELEMENT: ' + this.element + ' and power level of ' + this.power);
-    }
 
     getElement(){
-        return this.element;
+        return this.#element;
     }
     getPower(){
-        return this.power;
+        return this.#power;
     }
     showCard(){
         if (this == undefined){
@@ -71,15 +76,8 @@ class Card {
             return;
         }
         
-    // Debugging
-    console.log('ELEMENT: ' + this.element);
-    console.log('POWER LEVEL: ' + this.power);
+        // Debugging
+        console.log('ELEMENT: ' + this.#element);
+        console.log('POWER LEVEL: ' + this.#power);
     }
 }
-
-/* 
-    === Card Visuals ===
-        - This part should help with visualising a card
-
-        - TO-UPDATE: THIS IS MOSTLY PLACEHOLDER CODE AT THE MOMENT
-*/
