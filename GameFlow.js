@@ -88,21 +88,6 @@ function addScore(pScores, Card){
     }
 }
 
-function showScores(){
-    // Player 1 Scores
-    document.getElementById('p1ElementalScore').innerHTML = p1Scores.elementScore;
-    document.getElementById('p1PyroScore').innerHTML = p1Scores.pyroScore;
-    document.getElementById('p1CryoScore').innerHTML = p1Scores.cryoScore;
-    document.getElementById('p1HydroScore').innerHTML = p1Scores.hydroScore;
-
-    // Player 2 Scores
-    document.getElementById('p2ElementalScore').innerHTML = p2Scores.elementScore;
-    document.getElementById('p2PyroScore').innerHTML = p2Scores.pyroScore;
-    document.getElementById('p2CryoScore').innerHTML = p2Scores.cryoScore;
-    document.getElementById('p2HydroScore').innerHTML = p2Scores.hydroScore;
-
-}
-
 /*
     Checks to see if the player has won
         - TODO: Decide what happens when a winner is found
@@ -113,6 +98,7 @@ function winCheck(){
     if (p1Scores.elementScore >= MATCH_WIN){
             winner = 'Player 1';
             system.innerHTML = 'Player 1 has won due to winning with all three elements!';
+            matchWin.play();
         }
         
     else if (p1Scores.pyroScore >= MATCH_WIN
@@ -120,11 +106,13 @@ function winCheck(){
         || p1Scores.hydroScore >= MATCH_WIN){
             winner = 'Player 1';
             system.innerHTML = 'Player 1 has won due to winning thrice with one element!';
+            matchWin.play();
         }
 
     else if (p2Scores.elementScore >= MATCH_WIN){
             winner = 'Player 2';
             system.innerHTML = 'Player 2 has won due to winning thrice with all three elements!';
+            matchLose.play();
         }
 
     else if (p2Scores.pyroScore >= MATCH_WIN
@@ -132,6 +120,7 @@ function winCheck(){
         || p2Scores.hydroScore >= MATCH_WIN){
             winner = 'Player 2';
             system.innerHTML = 'Player 2 has won due to winning thrice with one element!';
+            matchLose.play();
         }
 }
 
@@ -180,11 +169,13 @@ function compareCards(index){
     if (elementResult == WIN){
         addScore(p1Scores, p1Card);
         system.innerHTML = 'Player 1 wins as ' + p1Card.getElement() + ' beats ' + p2Card.getElement();
+        roundWin.play();
     }
 
     else if (elementResult == LOSE){
         addScore(p2Scores, p2Card);
         system.innerHTML = 'Player 2 wins as ' + p2Card.getElement() + ' beats ' + p1Card.getElement();
+        roundLose.play();
     }
 
     else if (elementResult == DRAW){
@@ -192,13 +183,16 @@ function compareCards(index){
         if (p1Card.getPower() > p2Card.getPower()){
             addScore(p1Scores, p1Card);
             system.innerHTML = 'Player 1 Wins the round due to higher power level';
+            roundWin.play();
         }
         else if (p1Card.getPower() < p2Card.getPower()){
             addScore(p2Scores, p2Card);
             system.innerHTML = 'Player 2 Wins the round due to higher power level';
+            roundLose.play();
         }
         else if (p1Card.getPower() == p2Card.getPower()){
             system.innerHTML = 'IT IS A DRAW';
+            draw.play();
         }
         else {
             system.innerHTML = 'ERROR: MATCHING ELEMENT BUT POWER LEVEL UNDETERMINED';
@@ -230,35 +224,79 @@ function finishRound(){
     }
 }
 
-function main(){
-let round = 1;
-    if (winner == 'NONE'){
-        switch (phase){
-            case 'selection':
-                cardVisuals.displayField();
-                system.innerHTML = 'Round ' + round + ' begin!'; 
-                showScores();
-                console.log(player1Deck);
-                console.log(player2Deck);
-                fillDeck();
-        
-                ctx.clearRect(0, 0, 1024, 768);
-                cardVisuals.displayDeck({x: 419, y: 620}, player1Deck);
-                cardVisuals.displayDeck({x: 10, y: 18}, player2Deck);
-                break;
-            
-            case 'comparison':
-                ctx.clearRect(0, 0, 1024, 768);
-                compareCards(0);
-                cardVisuals.displayField();
-                cardVisuals.displayDeck({x: 419, y: 620}, player1Deck);
-                cardVisuals.displayDeck({x: 10, y: 18}, player2Deck);
-                fieldRemove(PLAYER1, 0);
-                fieldRemove(PLAYER2, 0);
-                winCheck();
-                showScores();
-                round++;
-                break;
-        }
-    }
+function displayScores(){
+
+    // Draws Player 1's Scores
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = '#f4d8a8';
+    ctx.roundRect(22, 224, 260, 320, 10);
+    setShadow("#000000", 2, 4, 10); // Adds Shadow
+    ctx.fill();
+    
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '40px GenshinFont';
+    ctx.textAlign = 'center';
+    ctx.textBaseLine = 'bottom';
+    
+    setShadow(undefined, 0, 0, 0); // Removes Shadow
+    ctx.globalAlpha = 1;
+
+    ctx.fillText("Player 1", 145, 280, 300);
+    ctx.fillText("Scores", 145, 320, 300);
+
+    ctx.font = '20px GenshinFont';
+    ctx.textAlign = 'left';
+    ctx.textBaseLine = 'bottom';
+
+    let p1BaseY = 380;
+    let p1LeftBaseX = 40;
+    let p1RightBaseX = 200;
+    let verticalSpacing = 40;
+
+    ctx.fillText("Unique Wins: ", p1LeftBaseX, p1BaseY, 300);
+    ctx.fillText("Pyro Wins: ", p1LeftBaseX, p1BaseY + (verticalSpacing * 1), 300);
+    ctx.fillText("Cryo Wins: ", p1LeftBaseX, p1BaseY + (verticalSpacing * 2), 300);
+    ctx.fillText("Hydro Wins: ", p1LeftBaseX, p1BaseY + (verticalSpacing * 3), 300);
+
+    ctx.fillText(p1Scores.elementScore, p1RightBaseX, p1BaseY, 300);
+    ctx.fillText(p1Scores.pyroScore, p1RightBaseX, p1BaseY + (verticalSpacing * 1), 300);
+    ctx.fillText(p1Scores.cryoScore, p1RightBaseX, p1BaseY + (verticalSpacing * 2), 300);
+    ctx.fillText(p1Scores.hydroScore, p1RightBaseX, p1BaseY + (verticalSpacing * 3), 300);
+
+
+    // Draws Player 2's Scores
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = '#f4d8a8';
+    ctx.roundRect(742, 224, 260, 320, 10);
+    setShadow("#000000", 2, 4, 10); // Adds Shadow
+    ctx.fill();
+    
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '40px GenshinFont';
+    ctx.textAlign = 'center';
+    ctx.textBaseLine = 'bottom';
+    
+    setShadow(undefined, 0, 0, 0); // Removes Shadow
+    ctx.globalAlpha = 1;
+
+    ctx.fillText("Player 2", 145 + 720, 280, 300);
+    ctx.fillText("Scores", 145 + 720, 320, 300);
+
+    ctx.font = '20px GenshinFont';
+    ctx.textAlign = 'left';
+    ctx.textBaseLine = 'bottom';
+
+    let p2BaseY = 380;
+    let p2LeftBaseX = 40 + 720;
+    let p2RightBaseX = 200 + 720;
+
+    ctx.fillText("Unique Wins: ", p2LeftBaseX, p2BaseY, 300);
+    ctx.fillText("Pyro Wins: ", p2LeftBaseX, p2BaseY + (verticalSpacing * 1), 300);
+    ctx.fillText("Cryo Wins: ", p2LeftBaseX, p2BaseY + (verticalSpacing * 2), 300);
+    ctx.fillText("Hydro Wins: ", p2LeftBaseX, p2BaseY + (verticalSpacing * 3), 300);
+
+    ctx.fillText(p2Scores.elementScore, p2RightBaseX, p2BaseY, 300);
+    ctx.fillText(p2Scores.pyroScore, p2RightBaseX, p2BaseY + (verticalSpacing * 1), 300);
+    ctx.fillText(p2Scores.cryoScore, p2RightBaseX, p2BaseY + (verticalSpacing * 2), 300);
+    ctx.fillText(p2Scores.hydroScore, p2RightBaseX, p2BaseY + (verticalSpacing * 3), 300);
 }

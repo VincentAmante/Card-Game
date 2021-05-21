@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@font-face { 
+    font-family: 'GenshinFont'; 
+    src: url('font/genshinFont.ttf'); 
+} 
 
 body {
-    font-family: 'Jost', sans-serif;
-    background-color: #52164C;
+    font-family: 'GenshinFont', sans-serif;
+    background-color: #1c1c22;
     overflow-x: hidden;
     font-size: 105%;
 }
@@ -17,29 +20,37 @@ header {
     font-size: 125%;
 }
 
-/* 
-======  This contains the code for the storybox, where all narration will occur  =====
-*/
 
 #cardGame {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 0;
+    margin-top: 40px;
     border-radius: 20px;
-    background: #14175a;
-    background: linear-gradient(0deg, #32114b 20%, #16185926 48%, #14175a00 100%);
+    background: #a7a594;
     
     background-image: url('images/bg.png');
 }
 
-/* Textbox containing the protagonist's narration */
+.uiContainer {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    width: fit-content;
+    padding: 10px;
+}
+.uiContainer h1{
+    text-align: center;
+    color: #d3d3d3;
+
+}
 .interface {
     margin: auto;
     margin-top: 10px;
-    padding: 10px 60px;
-    background-color: #1B0F35;
-    color: #D7D7D7;
+    padding: 20px;
+    background-color: #f4d8a8;
+    color: #1c1c22;
+    font-weight: 600;
     border-radius: 10px;
     width: fit-content;
 
@@ -52,20 +63,18 @@ header {
     text-align: center;
 }
 
-/* Textbox when the character speaks*/
 .announcement {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px 40px;
     display: block;
-    overflow: auto;
 
     font-size: 200%;
-    background-color: #12062B;
     color: #FFFFFF;
     border-radius: 10px;
-    width: fit-content;
+    width: 65%;
+    text-align: center;
 }
 
 .announcement p {
@@ -83,20 +92,18 @@ header {
     border-radius: 10px;
 }
 
-/* 
-======  Style for the button taking the user to different places in the story  =====
-*/
-#choices{
+.choices{
     margin: auto;
     margin-top: 20px;
-    width: 95%;
+    width: 75%;
     display: flex;
 }
 
 
 button {
-    font-family: 'Jost', sans-serif;
-    font-size: 105%;
+    font-family: 'GenshinFont', sans-serif;
+    font-size: 155%;
+    font-weight: 600;
 
     padding: 30px;
     margin-right: 15px;
@@ -105,9 +112,9 @@ button {
     border: none;
     text-decoration: none;
     cursor: pointer;
-    color: #d694bc;
+    color: #5a4b31;
     border-radius: 10px;
-    background-color: #061029;
+    background-color: #f4d8a8;
     flex-grow: 100;
 
     transition: background-color 0.75s ease;

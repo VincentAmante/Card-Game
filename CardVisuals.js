@@ -1,12 +1,13 @@
+    
+    let cardSpacing = 30; // Spacing of the cards in the deck
 
-cardVisuals = function(){   
 // Defines the dimensions of a standard card
         const NORMAL_CARD = {
             W: 95, // Width
             H: 130, // Height
             R: 10, // Radius
-            fontSize: '24px',
-            txtOffsetX: 13,
+            fontSize: '20px',
+            txtOffsetX: 12,
             txtOffsetY: 8,
             imgSize: 65,
             imgOffsetX: 17,
@@ -41,22 +42,15 @@ cardVisuals = function(){
         linGrd.addColorStop(1, gradient.stopEnd);
         ctx.fillStyle = linGrd;
 
-        // Sets Shadow Function
-        function setShadow(colour, offSetX, offSetY, blur){
-            ctx.shadowColor = colour;
-            ctx.shadowOffsetX = offSetX;
-            ctx.shadowOffsetY = offSetY;
-            ctx.shadowBlur = blur;
-        }
-
         setShadow("#000000", 2, 4, 10); // Adds Shadow
+
         ctx.fill();
 
         setShadow(undefined, 0, 0, 0); // Removes Shadow
         
         // Adds text
         ctx.fillStyle = '#FFFFFF';
-        ctx.font = CardType.fontSize + ' Jost';
+        ctx.font = CardType.fontSize + ' ' + 'GenshinFont';
         ctx.textAlign = 'right';
         ctx.textBaseLine = 'bottom';
         ctx.fillText(Card.getPower(), 
@@ -73,7 +67,13 @@ cardVisuals = function(){
             }
     }
 
-
+    // Sets Shadow Function
+    function setShadow(colour, offSetX, offSetY, blur){
+        ctx.shadowColor = colour;
+        ctx.shadowOffsetX = offSetX;
+        ctx.shadowOffsetY = offSetY;
+        ctx.shadowBlur = blur;
+    }
 
     function setGradient(gradientStart, gradientEnd){ 
         return { stopStart: gradientStart, stopEnd: gradientEnd }
@@ -109,10 +109,9 @@ cardVisuals = function(){
 
     // Displays the deck
     function displayDeck(coords, deck){
-        let spacing = 30;
         
         for (let i = 0; i < 5; i++){
-        let x = coords.x + (NORMAL_CARD.W * i) + (spacing * i);
+        let x = coords.x + (NORMAL_CARD.W * i) + (cardSpacing * i);
         console.log(x);
         
         displayCard({x: x, y: coords.y}, deck[i], NORMAL_CARD);
@@ -132,10 +131,3 @@ cardVisuals = function(){
                 field[0][1], WIDE_CARD);
         }
     }
-
-    return {
-        displayCard: displayCard,
-        displayDeck: displayDeck,
-        displayField: displayField
-    }
-}()
