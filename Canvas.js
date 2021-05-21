@@ -4,10 +4,13 @@ let ctx = canvas.getContext("2d");
 canvas.height = 768;
 canvas.width = 1024;
 
-///// CODE IMPORTED FROM https://codepen.io/simon-wu/pen/ExgLEXQ TO RENDER ROUNDED RECTANGLE
+// Renders rounded rectangle
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
+
+    // Prevents errors from excess radius
     if (width < 2 * radius) radius = width / 2;
     if (height < 2 * radius) radius = height / 2;
+
     this.beginPath();
     this.moveTo(x + radius, y);
     this.arcTo(x + width, y, x + width, y + height, radius);
@@ -17,4 +20,3 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, ra
     this.closePath();
     return this;
 }
-// END OF IMPORTED CODE

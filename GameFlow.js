@@ -116,7 +116,7 @@ function winCheck(){
         }
         
     else if (p1Scores.pyroScore >= MATCH_WIN
-        || p1Scores.cryoWin >= MATCH_WIN
+        || p1Scores.cryoScore >= MATCH_WIN
         || p1Scores.hydroScore >= MATCH_WIN){
             winner = 'Player 1';
             system.innerHTML = 'Player 1 has won due to winning thrice with one element!';
@@ -128,7 +128,7 @@ function winCheck(){
         }
 
     else if (p2Scores.pyroScore >= MATCH_WIN
-        || p2Scores.cryoWin >= MATCH_WIN
+        || p2Scores.cryoScore >= MATCH_WIN
         || p2Scores.hydroScore >= MATCH_WIN){
             winner = 'Player 2';
             system.innerHTML = 'Player 2 has won due to winning thrice with one element!';
