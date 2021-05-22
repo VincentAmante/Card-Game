@@ -186,7 +186,7 @@ function compareCards(index){
 
     else if (elementResult == LOSE){
         addScore(p2Scores, p2Card);
-        system.innerHTML = 'You win as ' + p2CardElement + ' beats ' + p1CardElement;
+        system.innerHTML = 'Enemy AI wins as ' + p2CardElement + ' beats ' + p1CardElement;
         roundLose.play();
     }
 
