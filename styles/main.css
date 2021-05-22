@@ -1,0 +1,220 @@
+@font-face { 
+    font-family: 'GenshinFont'; 
+    src: url('../font/genshinFont.ttf'); 
+} 
+@font-face {
+    font-family: 'Koho';
+    src: url('../font/KoHo-Medium.ttf');
+}
+
+body {
+    font-family: 'GenshinFont', sans-serif;
+    background-color: #1c1c22;
+    overflow-x: hidden;
+    font-size: 105%;
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: #000000;
+    padding: 20px;
+    padding-left: 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: #ffffff;
+}
+
+header a{
+    font-size: 36px;
+    text-decoration: none;
+    padding: 10px;
+    color: #ffffff;
+    margin-right: 50px;
+}
+
+header a:hover{
+    font-size: 36px;
+    text-decoration: none;
+    padding: 10px;
+    color: #b1b1d5;
+    background-color: #101010;
+    border-radius: 10px;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+    padding: 1px;
+    padding-left: 15px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 250%;
+    font-weight: 100;
+    display: inline-block;
+}
+
+.title img {
+    margin: auto;
+}
+
+.title h1 {
+    margin-bottom: 0px;
+}
+
+.title p {
+    font-family: 'Koho';
+    margin-top: 4px;
+    font-weight: 100;
+}
+
+#cardGame {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    background: #a7a594;
+    
+    background-image: url('../images/bg.png');
+}
+
+.uiContainer {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    width: fit-content;
+    padding: 10px;
+}
+.uiContainer h1{
+    text-align: center;
+    color: #d3d3d3;
+
+}
+.interface {
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 10px;
+    width: 90%;
+    font-size: large;
+    text-align: justify;
+}
+.interface p{
+    font-family: 'Koho', sans-serif;
+    font-size: 120%;
+}
+
+.interface h1 {
+    text-align: center;
+}
+
+.interface h2 {
+    font-family: 'Koho', sans-serif;
+    text-align: center;
+    font-weight: 400;
+}
+
+.announcement {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+
+    font-size: 200%;
+    color: #101010;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.announcement p {
+    margin-top: 2px;
+    float: left;
+    display: block;
+}
+
+.announcement img {
+    width: 100px;
+    padding: 5px;
+    float: left;
+    vertical-align: top;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.manualContainer {
+    border: #a9a9a9 solid 3px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.manual {
+    border: #8673a2 solid 3px;
+    border-radius: 5px;
+    background: rgb(78,104,134);
+    background: -moz-linear-gradient(0deg, rgba(78,104,134,1) 0%, rgba(42,47,60,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(78,104,134,1) 0%, rgba(42,47,60,1) 100%);
+    background: linear-gradient(0deg, rgba(78,104,134,1) 0%, rgba(42,47,60,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4e6886",endColorstr="#2a2f3c",GradientType=1);
+    padding: 20px;
+    margin: 10px;
+    box-shadow: inset 0 0 20px #101010;
+
+    font-family: 'Koho', sans-serif;
+    font-weight: 400px;
+    font-size: 110%;
+    text-shadow: 2px 2px 5px #101010;
+}
+.manual h2 {
+    font-family: 'GenshinFont', sans-serif;
+}
+.manual img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.manual a {
+    text-decoration: none;
+    transition: background-color 0.75s ease;
+    transition: color 0.5s ease;
+    color: #f4d8a8;
+}
+.manual a:hover {
+    text-decoration: none;
+    color: #b1b1d5;
+    font-size: 120%;
+}
+
+.choices{
+    margin: auto;
+    margin-top: 20px;
+    width: 75%;
+    display: flex;
+}
+
+.audio {
+    width: 45%;
+    margin: auto;
+    padding-top: 20px;
+}
+.audio audio{
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    height: 70px;
+    background-color: #FFFFFF;
+    padding-top: 0;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    box-shadow: 0px -2px 10px #4b4b4b;
+    font-size: 90%;
+}

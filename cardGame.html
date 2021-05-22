@@ -6,35 +6,166 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Janken Impact</title>
-    <link href='main.css' rel='stylesheet'>
+    <link href='styles/main.css' rel='stylesheet'>
     <link  href="images/icon.png" rel="icon">
-
-    <style>
-        @font-face { 
-            font-family: 'GenshinFont'; 
-            src: url('font/genshinFont.ttf'); 
-        } 
-    </style>
 </head>
 
 <body>
     <header>
-        <h1>Welcome to Janken Impact!</h1>
+        <a href = '#cardGame'>Play</a>
+        <a href = '#instructions'>Instructions</a>
+        <a href = '#elementalChart'>Elemental Chart</a>
     </header>
+    <div class = 'title'>
+        <h1>Janken&nbsp;
+            <img src = 'images/icon.png' width = '120px'> 
+            &nbsp;Impact</h1>
+            <p>By Vincent Ignatius S. Amante</p>
+    </div>
         <canvas id="cardGame"></canvas>
-        <div id="results" class = 'announcement'><p>Welcome to the Game!</p></div>
+        
 
-    <!-- Contains files involving the main game-->
-    <script src='CardClass.js'></script>
-    <script src='DeckManager.js'></script>
-    <script src='ComputerAI.js'></script>
-    <script src='GameFlow.js'></script>
+        <div class = "audio">
+            <audio id = "bgm" loop = 'true' controls>
+                <source src = "audio/bgm.mp3">
+            </audio>
+        </div>
 
-    <!-- Contains files for visualising the game in Canvas -->
-    <script src='Canvas.js'></script>
-    <script src='CardVisuals.js'></script>
-    <script src = 'Audio.js'></script>
-    <script src = 'Main.js'></script>
+        <main>
+            <div id = 'instructions' class = 'interface'>
+                <h1>
+                    Based off a minigame inside the classic social game 'Club Penguin' comes Janken Impact! <br>
+                </h1>
+                <h2>A card game thematically inspired by popular game 'Genshin Impact', and mechanically by 'Card Jitsu'</h2>
+                <div class = 'manualContainer'>
+                    <div class = 'manual'>
+                        <p>
+                            This is a game akin to rock-paper-scissors, where you pick one element, and there's a chance
+                            that the enemy will pick an element that loses to you, beats you, or is the same as yours! <br>
+                        </p>
+                        <p>
+                            In the case of two matching elements, the higher number will win!
+                        </p>
+                        <p>
+                            While its predecessors rely more on luck to play the game,
+                            Janken Impact offers you the opportunity to see your opponent's cards. <br>
+                            Giving you the chance to strategise the best possible outcome!
+                        </p>
+                    </div>
+                </div>
+                
+                <br><br>
+
+                <h1 style = 'font-size: 350%;'>How to Play</h1>
+
+                <h2>Controls</h2>
+                <div class = 'manualContainer'>
+                    <div class = 'manual'>
+                        <p>The game is played completely through clicks.</p>
+                        <p>
+                            When there is no card on the field, 
+                            click any of the cards on your deck at the bottom to play it into the field.
+                        </p>
+                        <p>
+                            When the round is over (when cards are on the field), 
+                            click anywhere inside the canvas to start a new round.
+                        </p> 
+                    </div>
+                </div>
+
+                <h2>Cards and Rounds</h2>
+                <div class = 'manualContainer'>
+                    <div class = 'manual'>
+                        <p>
+                            A single match is composed of rounds.
+                            In each round, a card chosen by both players will be pitted against the other
+                        </p>
+
+                        <p>
+                            Each player will be granted <strong>5 cards</strong>,
+                            with a randomised element and a randomised power level. <br>
+
+                            All cards are visible, and only one card from each deck will be chosen. <br>
+                        </p>
+
+                        <p>
+                            The chosen card will be discarded after the round, 
+                            and a new randomised card will take its place.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Winning</h2>
+                <div class = 'manualContainer'>
+                    <div class = 'manual'>
+                        <p>
+                            The winning card will grant the owner a point as its corresponding <strong>Elemental Win</strong>.
+                            If it is the first time the player won with that element,
+                            another point is awarded as a <strong>Unique Win</strong>.
+                        </p>
+
+                        <p>
+                            A winner is decided when a player has either gotten <strong>3 Elemental Wins</strong>,
+                            or <strong>3 Unique Wins</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Elementals and Reactions</h2>
+                <div class = 'manualContainer' id = 'elementalChart'>
+                    <div class = 'manual'>
+                        <p>
+                            Currently, there are only three elements in the game: 
+                            <span class = 'pyro'><strong></strong>Pyro</strong></span> (fire),
+                            <span class = 'cryo'><strong>Cryo</strong></span> (ice), and
+                            <span class = 'hydro'><strong>Hydro</strong></span>.
+                        </p>
+
+                        <p>
+                            All three elements are strong against one element, but weak against another.
+                        </p>
+
+                        <p>The card with the stronger element automatically wins the round,
+                            but if pitted against its own element,
+                            the card with the higher number wins instead.
+                        </p>
+                        <h2>Element Chart with Reactions</h2>
+                        <img src = 'images/ElementChart.png'>
+                        <h2>
+                            <span class = 'pyro'><strong>Pyro</strong></span> 
+                                melts <span class = 'cryo'><strong>Cryo</strong></span>, 
+                                which freezes <span class = 'hydro'><strong>Hydro</strong></span>,
+                                which then douses <span class = 'pyro'><strong>Pyro</strong></span>. 
+                        </h2>
+                    </div>
+                </div>
+
+                <h1>Have fun with Janken Impact!</h1>
+                <div class = 'manualContainer'>
+                    <div class = 'manual'>
+                        <h2>
+                            End of instructions, hope you enjoy the game!
+                        </h2>
+
+                        <h2><a href="#cardGame">Back to top!</a></h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <footer>
+        <div id="results" class = 'announcement'>Play on a modern browser and zoom out for best experience!</div>
+    </footer>
+        <!-- Contains files involving the main game-->
+        <script src='scripts/CardClass.js'></script>
+        <script src='scripts/DeckManager.js'></script>
+        <script src='scripts/ComputerAI.js'></script>
+        <script src='scripts/GameFlow.js'></script>
+    
+        <!-- Contains files focused on displaying the game in Canvas -->
+        <script src='scripts/Canvas.js'></script>
+        <script src='scripts/CardVisuals.js'></script>
+        <script src = 'scripts/Audio.js'></script>
+        <script src = 'scripts/Main.js'></script>
 </body>
 
 </html>
