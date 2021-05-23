@@ -222,3 +222,15 @@ footer {
     box-shadow: 0px -2px 10px #4b4b4b;
     font-size: 90%;
 }
+
+.pyro {
+    color: #e1842d;
+}
+
+.cryo {
+    color: #70e4b1;
+}
+
+.hydro {
+    color: #9ebdec;
+}
