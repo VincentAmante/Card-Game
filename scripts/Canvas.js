@@ -1,10 +1,26 @@
+/*
+    === Canvas.js ===
+    Purpose:
+        - Handle base canvas details
+        - Handle any canvas functions
+*/
+
 // Gets the canvas and its context
 let canvas = document.getElementById('cardGame');
 let ctx = canvas.getContext("2d");
 canvas.height = 768;
 canvas.width = 1024;
 
-// Renders rounded rectangle
+/**
+ * This draws a rounded rectangle using whatever context was given to it
+ * 
+ * @param {number} x - x coordinate of rectangle
+ * @param {number} y  - y coordinate
+ * @param {number} width  - intended width
+ * @param {number} height - intended height
+ * @param {number} radius - radius of the rounded corners that form the rectangle
+ * @returns A rounded rectangle
+ */
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
 
     // Prevents errors from excess radius

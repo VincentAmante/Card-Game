@@ -1,3 +1,9 @@
+/*
+    === Audio.js ===
+    Purpose:
+        - Define all sfx to be used in the game
+*/
+
 let roundWin = new Audio('audio/roundWin.mp3');
 let roundLose = new Audio('audio/roundLose.mp3');
 let matchWin = new Audio('audio/matchWin.mp3');

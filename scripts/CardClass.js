@@ -1,15 +1,14 @@
 /*
-    === Card Class ===
+    === CardClass.js ===
     Purpose:
         - Manage the base functionality of a card
         - Contains the type of card and its associated number / power
 */
 
-// Contains the list of elements a card can have
-//  - Also contains a null element just in case
 
+/** Array containing possible elements */
 const ELEMENTS = ['PYRO', 'CRYO', 'HYDRO'];
-const ELEMENT_NULL = 'NULL';
+const ELEMENT_NULL = 'NULL'; // Just in case
 
 // Contains the minimum and maximum power level a card can have
 const MIN_POWER = 1;
@@ -31,14 +30,18 @@ const MAX_POWER = 10;
             - otherwise, it just assigns the minimum powerlevel and sends an error logs
             
 */
-
 class Card {
 
     // PRIVATE FIELDS & METHODS
     #element;
     #power;
 
-    // Template for creating a new element
+    /**
+     * Constructor for creating a simple card
+     * 
+     * @param {string} element - Element of the card
+     * @param {number} power - Power level of the card
+     */
     constructor(element, power){
 
         // Element Validation
@@ -64,12 +67,16 @@ class Card {
     }
 
 
+    /** Gets element of card */
     getElement(){
         return this.#element;
     }
+    /** Gets power level of card */
     getPower(){
         return this.#power;
     }
+
+    /** Debugging tool to know the values of a card */
     showCard(){
         if (this == undefined){
             console.log('ERROR: Element is invalid');

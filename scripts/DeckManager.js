@@ -1,30 +1,32 @@
 /*
-    === Deck Manager ===
+    === DeckManager.js ===
     Purpose:
         - Handles the cards being distributed to the players decks
         - Also handles the cards being compared
 */
 
-// Player's decks are designed to carry around 3-4 cards 
+// Player's decks are designed to carry 5 cards 
 let player1Deck = [];
 let player2Deck = [];
 
 const MAX_CARDS = 5;
 
-// Fills the deck for both players
-function fillDeck(){
-    let toAdd = MAX_CARDS - player1Deck.length; 
+/** Fills both decks with cards based on missing amount */
+function fillDeck() {
+    let toAdd = MAX_CARDS - player1Deck.length;
+
     // Random cards for player 1
-    for (let i = 0; i < toAdd; i++){
+    for (let i = 0; i < toAdd; i++) {
+
         // Creates a new random card
         let element = Math.floor(Math.random() * ELEMENTS.length);
         let powerLevel = Math.ceil(Math.random() * MAX_POWER);
 
         player1Deck.push(new Card(element, powerLevel));
     }
-    
+
     // Random cards for player 2
-    for (let i = 0; i < toAdd; i++){
+    for (let i = 0; i < toAdd; i++) {
 
         let element = Math.floor(Math.random() * ELEMENTS.length);
         let powerLevel = Math.ceil(Math.random() * MAX_POWER);
@@ -32,8 +34,12 @@ function fillDeck(){
         player2Deck.push(new Card(element, powerLevel));
     }
 }
-// The main field for card comparisons
-let field = [ ['PLAYER1_CARD', 'PLAYER2_CARD'] ];
+
+/**
+    Main field for card comparisons
+        - Made a 2D array to support multiple cards on the field in the future
+*/
+let field = [['PLAYER1_CARD', 'PLAYER2_CARD']];
 
 // Number of cards already placed in the field
 let p1PlacedCards = 0;
@@ -46,18 +52,20 @@ const MAX_FIELD = 1;
 const PLAYER1 = 0;
 const PLAYER2 = 1;
 
-/*
-    Chooses a card from the deck/hand and placed into the field
-        Parameters:
-            <deck> - the deck from which this card will be removed from
-            <index> - index in the deck
-*/
-function chooseCard(deck, index, player){
+/**
+ * Chooses a card from the deck/hand and placed into the field
+ * 
+ * @param {array} deck - deck to take card from 
+ * @param {number} index - index of card from deck
+ * @param {number} player - player who owns the deck
+ * @returns 
+ */
+function chooseCard(deck, index, player) {
 
-    if (player == PLAYER1){
-        
+    if (player == PLAYER1) {
+
         // Attempting to show player 1 card
-        if (p1PlacedCards >= MAX_FIELD){
+        if (p1PlacedCards >= MAX_FIELD) {
             console.log('ERROR: FIELD ALREADY FULL');
             return;
         }
@@ -67,9 +75,9 @@ function chooseCard(deck, index, player){
         p1PlacedCards++;
     }
 
-    else if (player == PLAYER2){
+    else if (player == PLAYER2) {
         // Attempting to show player 2 card
-        if (p2PlacedCards >= MAX_FIELD){
+        if (p2PlacedCards >= MAX_FIELD) {
             console.log('ERROR: FIELD ALREADY FULL');
             return;
         }
@@ -82,13 +90,15 @@ function chooseCard(deck, index, player){
     deck.splice(index, 1);
 }
 
-/*
-    Removes a card from the field
-*/
-function fieldRemove(player, index){
+/**
+ * Removes a card from the field
+ * 
+ * @param {number} player - side to remove card from
+ */
+function fieldRemove(player) {
     let playerString = 'NULL';
 
-    switch (player){
+    switch (player) {
         case PLAYER1:
             playerString = 'PLAYER1';
             p1PlacedCards--;
@@ -102,7 +112,4 @@ function fieldRemove(player, index){
     }
 
     field[0][player] = playerString + "_EMPTY_CARD";
-    
-    // Debugging
-    console.log('REMOVED CARD FROM PLAYER ' + (player + 1) + ' AND INDEX: ' + index);
 }
