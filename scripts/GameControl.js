@@ -8,17 +8,18 @@
             
             EXTRA: (Unintended features that should've been separated)
             - Contains HTML messaging
-        
-        Win Condition:
-            Three-of-a-kind
-                - Game repeats until one of the following:
-                    - a player has a win with pyro/cryo/hydro
-                    - a player has a win with 3 of the same element
 */
 
 let winner = 'NONE'; // Match continues until winner is found
 
-// Three-of-a-kind Score Trackers
+/**
+ *         Win Condition:
+            Three-of-a-kind
+                - Game repeats until one of the following:
+                    - a player has a win with pyro/cryo/hydro
+                    - a player has a win with 3 of the same element
+ */
+
 const MATCH_WIN = 3;
 
 let p1Scores = {
