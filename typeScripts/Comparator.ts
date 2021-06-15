@@ -49,7 +49,8 @@ const comparePower = (northPower: number, southPower: number) => Math.sign(north
  * @param northCard - North's selected card
  * @param southCard - South's selected card
  */
-const compareCard = (northCard: Card, southCard: Card) => {
+
+export default (northCard: Card, southCard: Card) => {
     let result = {
         victoryType: 'Error: Undetermined!',
         outcome: NorthStatus.ERROR
