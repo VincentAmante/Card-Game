@@ -5,7 +5,6 @@
 //         - Contains the type of card and its associated number / power
 // */
 
-
 // /** Array containing possible elements */
 // const ELEMENTS = ['PYRO', 'CRYO', 'HYDRO'];
 // const ELEMENT_NULL = 'NULL'; // Just in case
@@ -24,11 +23,11 @@
 //             - The parameter validates the type, making sure it's one of the existing elements
 //             - If no valid type is found, it auto-assigns it pyro and sends an error log
 
-//         <power> [NUMBER]: a number associated to the card, deciding its power level 
+//         <power> [NUMBER]: a number associated to the card, deciding its power level
 //             - the power level is validated to be within the limits of the minimum and maximum power level
 //                 (defined above)
 //             - otherwise, it just assigns the minimum powerlevel and sends an error logs
-            
+
 // */
 // class Card {
 
@@ -38,7 +37,7 @@
 
 //     /**
 //      * Constructor for creating a simple card
-//      * 
+//      *
 //      * @param {string} element - Element of the card
 //      * @param {number} power - Power level of the card
 //      */
@@ -66,7 +65,6 @@
 //         console.log('New card was created with ELEMENT: ' + this.#element + ' and power level of ' + this.#power);
 //     }
 
-
 //     /** Gets element of card */
 //     getElement(){
 //         return this.#element;
@@ -82,7 +80,7 @@
 //             console.log('ERROR: Element is invalid');
 //             return;
 //         }
-        
+
 //         // Debugging
 //         console.log('ELEMENT: ' + this.#element);
 //         console.log('POWER LEVEL: ' + this.#power);
