@@ -6,6 +6,13 @@ enum NorthStatus {
     WIN = 1
 }
 
+/**
+ * Compares the elements 
+ * 
+ * @param northElement - Element of the north card
+ * @param southElement - Element of the south card
+ * @returns a number representing whether North won the round or not
+ */
 const compareElements = (northElement: number, southElement: number) => {
 
     const North = NorthStatus;
@@ -29,8 +36,19 @@ const compareElements = (northElement: number, southElement: number) => {
     return elementComparison[northElement][southElement];
 }
 
+/**
+ * 
+ * @param northPower - Power level of the north card
+ * @param southPower - power level of the south card
+ * @returns - one of [-1, 0, 1], representing whether North's round status
+ */
 const comparePower = (northPower: number, southPower: number) => Math.sign(northPower - southPower);
 
+/**
+ * 
+ * @param northCard - North's selected card
+ * @param southCard - South's selected card
+ */
 const compareCard = (northCard: Card, southCard: Card) => {
     let result = {
         victoryType: 'Error: Undetermined!',
@@ -40,5 +58,5 @@ const compareCard = (northCard: Card, southCard: Card) => {
     let elementalComparison = compareElements(northCard.element, southCard.element)
     let powerComparison = comparePower(northCard.powerLevel, southCard.powerLevel);
 
-
+    //TODO: Implement result logic
 }
